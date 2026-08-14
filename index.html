@@ -3,24 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#0b0a0a">
+<meta name="theme-color" content="#0f1a14">
 <meta name="format-detection" content="telephone=no">
 <title>Café de Paris — Menu</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Noto+Serif+Georgian:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,500;1,6..96,600&family=EB+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@400;500;600;700&family=Noto+Serif+Georgian:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0b0a0a;
-    --panel:#141110;
-    --panel-2:#1b1615;
-    --red:#9c1327;
-    --red-deep:#5e0c19;
-    --gold:#c9a24b;
-    --gold-soft:#e4c988;
-    --cream:#f3ead9;
-    --muted:#a89a86;
-    --hairline:rgba(201,162,75,0.28);
+    --ink:#0f1a14;
+    --panel:#16241c;
+    --panel-2:#1c2f24;
+    --brass:#c39a55;
+    --brass-bright:#e6c988;
+    --awning:#a3402e;
+    --awning-deep:#7a2c1f;
+    --paper:#f4ecda;
+    --muted:#8fa393;
+    --hairline:rgba(195,154,85,0.30);
+    --stripe-a:rgba(244,236,218,0.07);
+    --stripe-b:rgba(163,64,46,0.16);
   }
   *{box-sizing:border-box;}
   html{
@@ -30,8 +32,8 @@
   html,body{overflow-x:hidden;}
   body{
     margin:0;
-    background:var(--bg);
-    color:var(--cream);
+    background:var(--ink);
+    color:var(--paper);
     font-family:'Noto Serif Georgian','EB Garamond',serif;
     -webkit-font-smoothing:antialiased;
     line-height:1.5;
@@ -45,50 +47,64 @@
     max-width:560px;
     margin:0 auto;
     min-height:100vh;
-    background:var(--bg);
+    background:var(--ink);
     padding-bottom:calc(60px + env(safe-area-inset-bottom));
     position:relative;
   }
   @media (min-width:640px){
     body{background:var(--panel-2);}
     .app{
-      box-shadow:0 0 0 1px var(--hairline), 0 30px 70px rgba(0,0,0,0.55);
+      box-shadow:0 0 0 1px var(--hairline), 0 30px 70px rgba(0,0,0,0.6);
     }
   }
   a{color:inherit;}
 
+  /* ---------- AWNING STRIPE (signature motif) ---------- */
+  .awning{
+    height:14px;
+    background:repeating-linear-gradient(
+      115deg,
+      var(--awning) 0 22px,
+      var(--awning-deep) 22px 24px,
+      var(--paper) 24px 46px,
+      var(--awning-deep) 46px 48px
+    );
+    box-shadow:0 2px 10px rgba(0,0,0,0.4);
+  }
+  .awning.thin{height:6px;opacity:0.85;}
+
   /* ---------- HEADER / MASTHEAD ---------- */
   .masthead{
     background:
-      radial-gradient(140% 70% at 50% -20%, rgba(156,19,39,0.14), transparent 55%),
-      linear-gradient(180deg,#0d0b0b 0%,#0b0a0a 100%);
-    padding:calc(36px + env(safe-area-inset-top)) 20px 26px;
+      radial-gradient(130% 65% at 50% -25%, rgba(195,154,85,0.10), transparent 55%),
+      linear-gradient(180deg,#131f18 0%,#0f1a14 100%);
+    padding:calc(30px + env(safe-area-inset-top)) 20px 26px;
     text-align:center;
   }
   .logo-img{
     display:block;
-    width:min(78vw, 340px);
+    width:min(70vw, 300px);
     height:auto;
     margin:0 auto;
-    filter:drop-shadow(0 6px 18px rgba(0,0,0,0.55));
+    filter:drop-shadow(0 6px 18px rgba(0,0,0,0.55)) saturate(0.92);
   }
   .eyebrow{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:700;
-    letter-spacing:4px;
+    font-family:'Jost', sans-serif;
+    font-weight:600;
+    letter-spacing:3.5px;
     font-size:11px;
     text-transform:uppercase;
     color:var(--muted);
     margin-bottom:14px;
   }
   .wordmark{
-    font-family:'Fraunces', serif;
+    font-family:'Bodoni Moda', serif;
     font-optical-sizing:auto;
     font-style:italic;
     font-weight:600;
-    font-size:clamp(34px,9vw,54px);
+    font-size:clamp(32px,8.5vw,50px);
     letter-spacing:0.2px;
-    color:#f6f1e6;
+    color:var(--paper);
     margin:0;
     line-height:1.05;
   }
@@ -103,26 +119,26 @@
   .ornament .orn-line{
     flex:1;
     height:1px;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    background:linear-gradient(90deg,transparent,var(--brass),transparent);
   }
   .ornament .orn-mark{
-    color:var(--gold);
+    color:var(--brass);
     font-size:9px;
     transform:rotate(45deg);
     display:inline-block;
   }
   .tagline-pill{
     display:inline-block;
-    font-family:'Cormorant Garamond', serif;
-    font-weight:700;
-    letter-spacing:3px;
-    font-size:12px;
+    font-family:'Jost', sans-serif;
+    font-weight:600;
+    letter-spacing:2.6px;
+    font-size:11.5px;
     text-transform:uppercase;
-    color:var(--gold-soft);
+    color:var(--brass-bright);
     border:1px solid var(--hairline);
     padding:7px 20px;
-    border-radius:20px;
-    background:rgba(156,19,39,0.14);
+    border-radius:2px;
+    background:rgba(163,64,46,0.14);
   }
 
   /* ---------- LANGUAGE SWITCH ---------- */
@@ -133,24 +149,25 @@
     padding:18px 16px 6px;
   }
   .lang-btn{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:700;
-    letter-spacing:1px;
-    font-size:15px;
+    font-family:'Jost', sans-serif;
+    font-weight:600;
+    letter-spacing:1.2px;
+    font-size:13.5px;
+    text-transform:uppercase;
     background:transparent;
     border:1px solid var(--hairline);
     color:var(--muted);
     padding:10px 22px;
     min-height:42px;
-    border-radius:24px;
+    border-radius:2px;
     cursor:pointer;
     transition:all .2s ease;
   }
   .lang-btn.active{
-    background:linear-gradient(135deg,var(--gold-soft),var(--gold));
-    border-color:var(--gold);
+    background:linear-gradient(135deg,var(--brass-bright),var(--brass));
+    border-color:var(--brass);
     color:#1a1310;
-    box-shadow:0 6px 16px rgba(201,162,75,0.3);
+    box-shadow:0 6px 16px rgba(195,154,85,0.28);
   }
 
   /* ---------- CONTACT PANEL (call button + socials + info chips) ---------- */
@@ -174,17 +191,17 @@
     align-items:center;
     justify-content:center;
     gap:10px;
-    background:linear-gradient(135deg,var(--gold-soft),var(--gold));
+    background:linear-gradient(135deg,var(--brass-bright),var(--brass));
     color:#1a1310;
-    font-family:'Cormorant Garamond', serif;
-    font-weight:700;
-    font-size:18px;
+    font-family:'Jost', sans-serif;
+    font-weight:600;
+    font-size:15.5px;
     letter-spacing:0.3px;
     padding:14px 18px;
     min-height:52px;
-    border-radius:30px;
+    border-radius:3px;
     text-decoration:none;
-    box-shadow:0 8px 20px rgba(201,162,75,0.28);
+    box-shadow:0 8px 20px rgba(195,154,85,0.28);
   }
   .call-btn svg{
     width:19px;height:19px;
@@ -216,19 +233,19 @@
     display:inline-flex;
     align-items:center;
     gap:7px;
-    background:var(--bg);
+    background:var(--ink);
     border:1px solid var(--hairline);
-    border-radius:22px;
+    border-radius:2px;
     padding:10px 16px;
-    font-family:'Cormorant Garamond', serif;
-    font-weight:600;
-    font-size:13.5px;
-    color:var(--cream);
+    font-family:'Jost', sans-serif;
+    font-weight:500;
+    font-size:12.5px;
+    color:var(--paper);
     text-decoration:none;
   }
   .info-chip svg{
     width:14px;height:14px;
-    stroke:var(--gold);
+    stroke:var(--brass);
     fill:none;
     stroke-width:1.8;
     flex:0 0 auto;
@@ -239,7 +256,7 @@
     position:sticky;
     top:0;
     z-index:20;
-    background:rgba(11,10,10,0.94);
+    background:rgba(15,26,20,0.94);
     backdrop-filter:blur(6px);
     border-bottom:1px solid var(--hairline);
     padding:10px 0;
@@ -257,23 +274,23 @@
     flex:0 0 auto;
     display:flex;
     align-items:center;
-    font-family:'Cormorant Garamond', serif;
-    font-weight:600;
-    font-size:14.5px;
-    letter-spacing:0.5px;
+    font-family:'Jost', sans-serif;
+    font-weight:500;
+    font-size:13.5px;
+    letter-spacing:0.4px;
     color:var(--muted);
     background:var(--panel);
     border:1px solid var(--hairline);
     padding:9px 17px;
     min-height:38px;
-    border-radius:19px;
+    border-radius:2px;
     white-space:nowrap;
     cursor:pointer;
   }
   .cat-pill.active{
-    color:var(--cream);
-    background:linear-gradient(180deg,var(--red) 0%, var(--red-deep) 100%);
-    border-color:var(--red);
+    color:var(--paper);
+    background:linear-gradient(180deg,var(--awning) 0%, var(--awning-deep) 100%);
+    border-color:var(--awning);
   }
 
   /* ---------- CONTENT ---------- */
@@ -282,10 +299,10 @@
   /* Home grid of category tiles */
   .home-eyebrow{
     text-align:center;
-    font-family:'Cormorant Garamond', serif;
-    font-weight:700;
+    font-family:'Jost', sans-serif;
+    font-weight:600;
     letter-spacing:2.5px;
-    font-size:12px;
+    font-size:11.5px;
     text-transform:uppercase;
     color:var(--muted);
     margin:18px 0 16px;
@@ -297,13 +314,27 @@
     padding-bottom:10px;
   }
   .cat-card{
+    position:relative;
     background:var(--panel);
     border:1px solid var(--hairline);
-    border-radius:14px;
-    padding:22px 14px;
+    border-radius:3px;
+    padding:24px 14px 20px;
     text-align:center;
     cursor:pointer;
+    overflow:hidden;
     transition:transform .12s ease, border-color .2s ease, background .2s ease;
+  }
+  .cat-card::before{
+    content:'';
+    position:absolute;
+    top:0;left:0;right:0;
+    height:4px;
+    background:repeating-linear-gradient(
+      115deg,
+      var(--awning) 0 8px,
+      var(--paper) 8px 16px
+    );
+    opacity:0.85;
   }
   .cat-card:active{
     transform:scale(0.96);
@@ -311,20 +342,20 @@
   }
   .cat-card-title{
     display:block;
-    font-family:'Fraunces', serif;
+    font-family:'Bodoni Moda', serif;
     font-optical-sizing:auto;
     font-style:italic;
     font-weight:600;
     font-size:16.5px;
     line-height:1.28;
-    color:var(--gold-soft);
+    color:var(--brass-bright);
   }
   .cat-card-count{
     display:block;
     margin-top:8px;
-    font-family:'Cormorant Garamond', serif;
-    font-weight:600;
-    font-size:11px;
+    font-family:'Jost', sans-serif;
+    font-weight:500;
+    font-size:10.5px;
     letter-spacing:1.2px;
     text-transform:uppercase;
     color:var(--muted);
@@ -334,25 +365,25 @@
   .cat-page-head{padding-top:22px;}
   .back-pill{
     background:linear-gradient(180deg,var(--panel) 0%, var(--panel-2) 100%) !important;
-    color:var(--gold-soft) !important;
-    border-color:var(--gold) !important;
+    color:var(--brass-bright) !important;
+    border-color:var(--brass) !important;
   }
   section.category{padding-top:36px;scroll-margin-top:80px;}
   .cat-title{
     text-align:center;
-    font-family:'Fraunces', serif;
+    font-family:'Bodoni Moda', serif;
     font-optical-sizing:auto;
     font-style:italic;
     font-weight:600;
     font-size:26px;
     letter-spacing:0.3px;
-    color:var(--gold-soft);
+    color:var(--brass-bright);
     margin:0 0 4px;
-    text-shadow:0 0 20px rgba(201,162,75,0.18);
+    text-shadow:0 0 20px rgba(195,154,85,0.18);
   }
   .cat-rule{
     width:64px;height:1px;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    background:linear-gradient(90deg,transparent,var(--brass),transparent);
     margin:10px auto 24px;
   }
   .item{
@@ -364,29 +395,30 @@
   }
   .item:last-child{border-bottom:none;}
   .item-name{
-    font-size:16.5px;
+    font-family:'EB Garamond', serif;
+    font-size:17px;
     font-weight:600;
-    color:var(--cream);
+    color:var(--paper);
     line-height:1.4;
   }
   .badge-sig{
     display:inline-block;
     margin-left:8px;
     padding:2px 9px 3px;
-    font-family:'Cormorant Garamond', serif;
-    font-weight:700;
-    font-size:10.5px;
-    letter-spacing:1.4px;
+    font-family:'Jost', sans-serif;
+    font-weight:600;
+    font-size:10px;
+    letter-spacing:1.3px;
     text-transform:uppercase;
     color:#1c140d;
-    background:linear-gradient(135deg,var(--gold-soft),var(--gold));
-    border-radius:10px;
+    background:linear-gradient(135deg,var(--brass-bright),var(--brass));
+    border-radius:9px;
     vertical-align:2px;
     white-space:nowrap;
   }
   .item-unit{
     display:block;
-    font-family:'Cormorant Garamond',serif;
+    font-family:'EB Garamond',serif;
     font-style:italic;
     color:var(--muted);
     font-size:12.5px;
@@ -394,17 +426,18 @@
   }
   .leader{
     flex:1;
-    border-bottom:1px dotted rgba(201,162,75,0.35);
+    border-bottom:1px dotted rgba(195,154,85,0.35);
     transform:translateY(-4px);
     min-width:14px;
   }
   .item-price{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:700;
-    font-size:18.5px;
+    font-family:'Jost', sans-serif;
+    font-weight:600;
+    font-size:17px;
     letter-spacing:0.2px;
-    color:var(--gold-soft);
-    text-shadow:0 0 14px rgba(201,162,75,0.22);
+    font-variant-numeric:tabular-nums;
+    color:var(--brass-bright);
+    text-shadow:0 0 14px rgba(195,154,85,0.20);
     white-space:nowrap;
   }
   .item-price small{font-size:12px;color:var(--muted);font-weight:500;}
@@ -416,19 +449,20 @@
   }
   .size-chip{
     text-align:right;
-    font-family:'Cormorant Garamond', serif;
+    font-family:'Jost', sans-serif;
   }
   .size-chip .vol{
     display:block;
-    font-size:11px;
+    font-size:10.5px;
     letter-spacing:0.5px;
     color:var(--muted);
     text-transform:uppercase;
   }
   .size-chip .val{
     font-weight:600;
-    font-size:16px;
-    color:var(--gold);
+    font-size:15.5px;
+    font-variant-numeric:tabular-nums;
+    color:var(--brass);
   }
 
   /* ---------- FOOTER ---------- */
@@ -439,15 +473,15 @@
     margin-top:40px;
   }
   footer .fw{
-    font-family:'Fraunces', serif;
+    font-family:'Bodoni Moda', serif;
     font-optical-sizing:auto;
     font-style:italic;
     font-weight:600;
-    font-size:22px;
-    color:var(--gold-soft);
+    font-size:21px;
+    color:var(--brass-bright);
   }
   footer p{
-    font-family:'Cormorant Garamond', serif;
+    font-family:'EB Garamond', serif;
     color:var(--muted);
     font-size:13px;
     max-width:420px;
@@ -460,13 +494,15 @@
     .masthead{padding-left:14px;padding-right:14px;}
     main{padding-left:14px;padding-right:14px;}
     .item-name{font-size:15.5px;}
-    .item-price{font-size:17px;}
+    .item-price{font-size:16px;}
     .cat-title{font-size:23px;}
   }
 </style>
 </head>
 <body>
 <div class="app">
+
+<div class="awning"></div>
 
 <div class="masthead">
   <div class="eyebrow" id="eyebrowText">ზესტაფონი · საქართველო</div>
@@ -484,6 +520,8 @@
   <button class="lang-btn" data-lang="en">EN</button>
   <button class="lang-btn" data-lang="ru">RU</button>
 </div>
+
+<div class="awning thin"></div>
 
 <div class="contact-panel">
   <div class="call-row">
