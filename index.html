@@ -497,6 +497,270 @@
     .item-price{font-size:16px;}
     .cat-title{font-size:23px;}
   }
+
+  /* ---------- BASKET: STEPPER + ADD BUTTON ---------- */
+  .price-basket-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex:0 0 auto;
+  }
+  .sizes{align-items:flex-end;}
+  .add-btn{
+    font-family:'Jost', sans-serif;
+    font-weight:600;
+    font-size:11.5px;
+    letter-spacing:0.8px;
+    text-transform:uppercase;
+    color:#1a1310;
+    background:linear-gradient(135deg,var(--brass-bright),var(--brass));
+    border:none;
+    padding:7px 13px;
+    border-radius:20px;
+    cursor:pointer;
+    white-space:nowrap;
+    box-shadow:0 4px 10px rgba(195,154,85,0.28);
+  }
+  .add-btn:active{transform:scale(0.94);}
+  .stepper{
+    display:flex;
+    align-items:center;
+    gap:0;
+    background:var(--panel-2);
+    border:1px solid var(--brass);
+    border-radius:20px;
+    overflow:hidden;
+  }
+  .step-btn{
+    width:30px;
+    height:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+    border:none;
+    color:var(--brass-bright);
+    font-size:17px;
+    font-weight:700;
+    cursor:pointer;
+    line-height:1;
+    padding:0;
+  }
+  .step-btn:active{background:rgba(195,154,85,0.22);}
+  .step-qty{
+    min-width:20px;
+    text-align:center;
+    font-family:'Jost', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    color:var(--paper);
+    font-variant-numeric:tabular-nums;
+  }
+
+  /* ---------- BASKET: FLOATING BAR ---------- */
+  .basket-bar{
+    position:fixed;
+    left:0;right:0;bottom:0;
+    z-index:40;
+    display:none;
+    justify-content:center;
+    padding:0 16px calc(14px + env(safe-area-inset-bottom));
+    pointer-events:none;
+  }
+  .basket-bar.show{display:flex;}
+  .basket-bar-inner{
+    pointer-events:auto;
+    width:100%;
+    max-width:528px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    background:linear-gradient(135deg,var(--awning) 0%, var(--awning-deep) 100%);
+    border:1px solid rgba(244,236,218,0.25);
+    border-radius:40px;
+    padding:8px 8px 8px 20px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.5);
+    cursor:pointer;
+  }
+  .basket-bar-info{
+    display:flex;
+    flex-direction:column;
+    color:var(--paper);
+    font-family:'Jost', sans-serif;
+    line-height:1.25;
+  }
+  .basket-bar-count{
+    font-size:11px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:rgba(244,236,218,0.75);
+  }
+  .basket-bar-total{
+    font-weight:700;
+    font-size:17px;
+    font-variant-numeric:tabular-nums;
+  }
+  .basket-bar-cta{
+    font-family:'Jost', sans-serif;
+    font-weight:600;
+    font-size:13.5px;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color:#1a1310;
+    background:linear-gradient(135deg,var(--brass-bright),var(--brass));
+    padding:11px 20px;
+    border-radius:30px;
+    white-space:nowrap;
+  }
+
+  /* ---------- BASKET: MODAL ---------- */
+  .basket-modal{
+    position:fixed;
+    inset:0;
+    z-index:50;
+    display:none;
+    background:rgba(6,10,8,0.72);
+    backdrop-filter:blur(3px);
+  }
+  .basket-modal.show{display:flex;align-items:flex-end;justify-content:center;}
+  @media (min-width:640px){
+    .basket-modal.show{align-items:center;}
+  }
+  .basket-modal-inner{
+    width:100%;
+    max-width:560px;
+    max-height:86vh;
+    background:var(--ink);
+    border:1px solid var(--hairline);
+    border-radius:16px 16px 0 0;
+    display:flex;
+    flex-direction:column;
+    box-shadow:0 -10px 40px rgba(0,0,0,0.5);
+  }
+  @media (min-width:640px){
+    .basket-modal-inner{border-radius:12px;max-height:80vh;}
+  }
+  .basket-modal-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 20px 14px;
+    border-bottom:1px solid var(--hairline);
+  }
+  .basket-modal-header h2{
+    font-family:'Bodoni Moda', serif;
+    font-optical-sizing:auto;
+    font-style:italic;
+    font-weight:600;
+    font-size:21px;
+    color:var(--brass-bright);
+    margin:0;
+  }
+  .basket-close{
+    width:34px;height:34px;
+    border-radius:50%;
+    background:var(--panel);
+    border:1px solid var(--hairline);
+    color:var(--paper);
+    font-size:15px;
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .basket-modal-list{
+    flex:1;
+    overflow-y:auto;
+    padding:6px 20px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .basket-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 0;
+    border-bottom:1px dashed var(--hairline);
+  }
+  .basket-row:last-child{border-bottom:none;}
+  .basket-row-info{flex:1;min-width:0;}
+  .basket-row-name{
+    font-family:'EB Garamond', serif;
+    font-weight:600;
+    font-size:15.5px;
+    color:var(--paper);
+    line-height:1.35;
+  }
+  .basket-row-meta{
+    font-family:'EB Garamond', serif;
+    font-style:italic;
+    font-size:12px;
+    color:var(--muted);
+    margin-top:1px;
+  }
+  .basket-row-line{
+    font-family:'Jost', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    color:var(--brass-bright);
+    min-width:56px;
+    text-align:right;
+    font-variant-numeric:tabular-nums;
+  }
+  .basket-row-remove{
+    width:26px;height:26px;
+    border-radius:50%;
+    background:transparent;
+    border:1px solid var(--hairline);
+    color:var(--muted);
+    font-size:12px;
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    flex:0 0 auto;
+  }
+  .basket-empty{
+    text-align:center;
+    padding:40px 10px;
+    color:var(--muted);
+    font-family:'EB Garamond', serif;
+    font-size:15px;
+  }
+  .basket-modal-footer{
+    padding:16px 20px calc(16px + env(safe-area-inset-bottom));
+    border-top:1px solid var(--hairline);
+  }
+  .basket-total-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    font-family:'Jost', sans-serif;
+    margin-bottom:14px;
+  }
+  .basket-total-row span:first-child{
+    font-weight:500;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    font-size:12.5px;
+    color:var(--muted);
+  }
+  .basket-total-row span:last-child{
+    font-weight:700;
+    font-size:22px;
+    color:var(--brass-bright);
+    font-variant-numeric:tabular-nums;
+  }
+  .basket-clear-btn{
+    width:100%;
+    background:transparent;
+    border:1px solid var(--hairline);
+    color:var(--muted);
+    font-family:'Jost', sans-serif;
+    font-weight:600;
+    letter-spacing:0.8px;
+    text-transform:uppercase;
+    font-size:12.5px;
+    padding:13px;
+    border-radius:3px;
+    cursor:pointer;
+  }
 </style>
 </head>
 <body>
@@ -556,6 +820,33 @@
   <p id="footerText"></p>
 </footer>
 
+<div class="basket-bar" id="basketBar" data-open-basket="1">
+  <div class="basket-bar-inner" data-open-basket="1">
+    <div class="basket-bar-info">
+      <span class="basket-bar-count" id="basketBarCount"></span>
+      <span class="basket-bar-total" id="basketBarTotal"></span>
+    </div>
+    <span class="basket-bar-cta" id="basketBarCta"></span>
+  </div>
+</div>
+
+<div class="basket-modal" id="basketModal">
+  <div class="basket-modal-inner">
+    <div class="basket-modal-header">
+      <h2 id="basketModalTitle"></h2>
+      <button class="basket-close" data-close-basket="1">✕</button>
+    </div>
+    <div class="basket-modal-list" id="basketList"></div>
+    <div class="basket-modal-footer">
+      <div class="basket-total-row">
+        <span id="basketTotalLabel"></span>
+        <span id="basketTotalValue"></span>
+      </div>
+      <button class="basket-clear-btn" id="basketClearBtn" data-clear-basket="1"></button>
+    </div>
+  </div>
+</div>
+
 </div>
 <script>
 /* ============ TRANSLATIONS FOR UI STRINGS ============ */
@@ -573,7 +864,15 @@ const UI = {
   signature: {ka:'საფირმო', en:'Signature', ru:'Фирменное'},
   chooseCategory: {ka:'აირჩიეთ კატეგორია', en:'Choose a category', ru:'Выберите категорию'},
   itemsWord: {ka:'პოზიცია', en:'items', ru:'позиций'},
-  backHome: {ka:'მენიუ', en:'Menu', ru:'Меню'}
+  backHome: {ka:'მენიუ', en:'Menu', ru:'Меню'},
+  add: {ka:'დამატება', en:'Add', ru:'Добавить'},
+  soloWord: {ka:'სოლო', en:'Solo', ru:'Соло'},
+  comboWord: {ka:'კომბო', en:'Combo', ru:'Комбо'},
+  yourPicks: {ka:'თქვენი არჩევანი', en:'Your Picks', ru:'Ваш выбор'},
+  viewOrder: {ka:'ნახვა', en:'View', ru:'Смотреть'},
+  total: {ka:'ჯამი', en:'Total', ru:'Итого'},
+  clearAll: {ka:'კალათის გასუფთავება', en:'Clear all', ru:'Очистить всё'},
+  emptyBasket: {ka:'ჯერ არაფერია არჩეული', en:'Nothing picked yet', ru:'Пока ничего не выбрано'}
 };
 
 /* ============ MENU DATA ============ */
@@ -835,13 +1134,118 @@ const MENU = [
 let currentLang = 'ka';
 let currentView = 'home'; // 'home' or a category id
 
-function renderPrice(item){
+/* ============ BASKET ============ */
+let basket = {}; // key -> quantity
+
+function loadBasket(){
+  try{
+    const raw = localStorage.getItem('cdp_basket_v1');
+    if(raw) basket = JSON.parse(raw) || {};
+  }catch(e){ basket = {}; }
+}
+
+function saveBasket(){
+  try{ localStorage.setItem('cdp_basket_v1', JSON.stringify(basket)); }catch(e){ /* ignore */ }
+}
+
+/* Returns array of addable variants for an item: [{key,label,price}] */
+function getVariants(item){
   if(item.sizes){
-    return `<div class="sizes">${item.sizes.map(s=>`
-      <div class="size-chip"><span class="vol">${s.v}</span><span class="val">${s.p} ₾</span></div>
-    `).join('')}</div>`;
+    return item.sizes.map((s,i)=>({key:String(i), label:s.v, price:s.p}));
   }
-  return `<span class="item-price">${item.p} ₾</span>`;
+  if(typeof item.p === 'string' && item.p.indexOf('/') !== -1){
+    const prices = item.p.split('/').map(x=>parseFloat(x));
+    const labels = [UI.soloWord[currentLang], UI.comboWord[currentLang]];
+    return prices.map((p,i)=>({key:String(i), label:labels[i] || '', price:p}));
+  }
+  return [{key:'0', label:null, price: item.p}];
+}
+
+function basketKey(catId, itemIndex, variantKey){
+  return catId + '::' + itemIndex + '::' + variantKey;
+}
+
+function parseBasketKey(key){
+  const parts = key.split('::');
+  return { catId: parts[0], itemIndex: parseInt(parts[1],10), variantKey: parts[2] };
+}
+
+function lookupBasketEntry(key){
+  const { catId, itemIndex, variantKey } = parseBasketKey(key);
+  const cat = MENU.find(c=>c.id===catId);
+  if(!cat) return null;
+  const item = cat.items[itemIndex];
+  if(!item) return null;
+  const variants = getVariants(item);
+  const variant = variants.find(v=>v.key===variantKey);
+  if(!variant) return null;
+  return { cat, item, variant };
+}
+
+function basketCount(){
+  return Object.values(basket).reduce((a,b)=>a+b,0);
+}
+
+function basketTotal(){
+  let sum = 0;
+  Object.keys(basket).forEach(key=>{
+    const entry = lookupBasketEntry(key);
+    if(entry) sum += entry.variant.price * basket[key];
+  });
+  return sum;
+}
+
+function stepperHTML(key){
+  const qty = basket[key] || 0;
+  if(qty > 0){
+    return `
+      <div class="stepper">
+        <button class="step-btn" data-dec="${key}" aria-label="minus">−</button>
+        <span class="step-qty">${qty}</span>
+        <button class="step-btn" data-inc="${key}" aria-label="plus">+</button>
+      </div>`;
+  }
+  return `<button class="add-btn" data-inc="${key}">${UI.add[currentLang]}</button>`;
+}
+
+function changeBasketQty(key, delta){
+  const current = basket[key] || 0;
+  const next = current + delta;
+  if(next <= 0){
+    delete basket[key];
+  } else {
+    basket[key] = next;
+  }
+  saveBasket();
+  render();
+}
+
+function clearBasket(){
+  basket = {};
+  saveBasket();
+  render();
+}
+
+function renderPrice(item, catId, itemIndex){
+  const variants = getVariants(item);
+  if(variants.length > 1){
+    return `<div class="sizes">${variants.map(v=>{
+      const key = basketKey(catId, itemIndex, v.key);
+      return `
+        <div class="size-chip">
+          <span class="vol">${v.label}</span>
+          <span class="val">${v.price} ₾</span>
+          ${stepperHTML(key)}
+        </div>`;
+    }).join('')}</div>`;
+  }
+  const v = variants[0];
+  const key = basketKey(catId, itemIndex, v.key);
+  return `
+    <div class="price-basket-row">
+      <span class="item-price">${v.price} ₾</span>
+      ${stepperHTML(key)}
+    </div>`;
 }
 
 function homeHTML(){
@@ -859,22 +1263,75 @@ function homeHTML(){
 }
 
 function categoryHTML(cat){
+  const isDualPrice = it => typeof it.p === 'string' && it.p.indexOf('/') !== -1;
   return `
     <div class="cat-page-head">
       <h2 class="cat-title">${cat.title[currentLang]}</h2>
       <div class="cat-rule"></div>
     </div>
-    ${cat.items.map(it=>`
+    ${cat.items.map((it, idx)=>`
       <div class="item">
         <div>
           <div class="item-name">${it.n[currentLang]}${it.sig ? `<span class="badge-sig">${UI.signature[currentLang]}</span>` : ''}</div>
-          ${it.u ? `<span class="item-unit">${it.u[currentLang]}</span>` : ''}
+          ${(it.u && !isDualPrice(it)) ? `<span class="item-unit">${it.u[currentLang]}</span>` : ''}
         </div>
         ${it.sizes ? '' : '<div class="leader"></div>'}
-        ${renderPrice(it)}
+        ${renderPrice(it, cat.id, idx)}
       </div>
     `).join('')}
   `;
+}
+
+function basketListHTML(){
+  const keys = Object.keys(basket);
+  if(keys.length === 0){
+    return `<div class="basket-empty">${UI.emptyBasket[currentLang]}</div>`;
+  }
+  return keys.map(key=>{
+    const entry = lookupBasketEntry(key);
+    if(!entry) return '';
+    const { item, variant } = entry;
+    const qty = basket[key];
+    const lineTotal = (variant.price * qty).toFixed(2).replace(/\.00$/,'');
+    return `
+      <div class="basket-row">
+        <div class="basket-row-info">
+          <div class="basket-row-name">${item.n[currentLang]}</div>
+          ${variant.label ? `<div class="basket-row-meta">${variant.label}</div>` : (item.u ? `<div class="basket-row-meta">${item.u[currentLang]}</div>` : '')}
+        </div>
+        <div class="stepper">
+          <button class="step-btn" data-dec="${key}" aria-label="minus">−</button>
+          <span class="step-qty">${qty}</span>
+          <button class="step-btn" data-inc="${key}" aria-label="plus">+</button>
+        </div>
+        <span class="basket-row-line">${lineTotal} ₾</span>
+        <button class="basket-row-remove" data-remove="${key}" aria-label="remove">✕</button>
+      </div>`;
+  }).join('');
+}
+
+function renderBasketUI(){
+  const bar = document.getElementById('basketBar');
+  const count = basketCount();
+  const total = basketTotal();
+
+  document.getElementById('basketBarCount').textContent = `${count} ${UI.itemsWord[currentLang]}`;
+  document.getElementById('basketBarTotal').textContent = `${total} ₾`;
+  document.getElementById('basketBarCta').textContent = UI.viewOrder[currentLang];
+  bar.classList.toggle('show', count > 0);
+
+  document.getElementById('basketModalTitle').textContent = UI.yourPicks[currentLang];
+  document.getElementById('basketList').innerHTML = basketListHTML();
+  document.getElementById('basketTotalLabel').textContent = UI.total[currentLang];
+  document.getElementById('basketTotalValue').textContent = `${total} ₾`;
+  document.getElementById('basketClearBtn').textContent = UI.clearAll[currentLang];
+}
+
+function openBasketModal(){
+  document.getElementById('basketModal').classList.add('show');
+}
+function closeBasketModal(){
+  document.getElementById('basketModal').classList.remove('show');
 }
 
 function render(){
@@ -902,10 +1359,49 @@ function render(){
   document.getElementById('addressText').textContent = UI.address[currentLang];
   document.getElementById('footerText').textContent = UI.footer[currentLang];
   document.documentElement.lang = currentLang;
+
+  renderBasketUI();
 }
 
-/* Delegated clicks: category tiles, nav pills, back button */
+/* Delegated clicks: category tiles, nav pills, back button, basket controls */
 document.addEventListener('click', (e)=>{
+  const incEl = e.target.closest('[data-inc]');
+  if(incEl){
+    changeBasketQty(incEl.dataset.inc, 1);
+    return;
+  }
+  const decEl = e.target.closest('[data-dec]');
+  if(decEl){
+    changeBasketQty(decEl.dataset.dec, -1);
+    return;
+  }
+  const removeEl = e.target.closest('[data-remove]');
+  if(removeEl){
+    delete basket[removeEl.dataset.remove];
+    saveBasket();
+    render();
+    return;
+  }
+  const clearEl = e.target.closest('[data-clear-basket]');
+  if(clearEl){
+    clearBasket();
+    return;
+  }
+  const closeEl = e.target.closest('[data-close-basket]');
+  if(closeEl){
+    closeBasketModal();
+    return;
+  }
+  const openEl = e.target.closest('[data-open-basket]');
+  if(openEl){
+    openBasketModal();
+    return;
+  }
+  if(e.target.id === 'basketModal'){
+    closeBasketModal();
+    return;
+  }
+
   const catEl = e.target.closest('[data-cat]');
   if(catEl){
     currentView = catEl.dataset.cat;
@@ -930,6 +1426,7 @@ document.querySelectorAll('.lang-btn').forEach(btn=>{
   });
 });
 
+loadBasket();
 render();
 </script>
 </body>
